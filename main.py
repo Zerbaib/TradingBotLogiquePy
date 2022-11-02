@@ -2,23 +2,25 @@ import random
 import time
 
 bourse = 10
+prix = bourse
 
-def affichageB(bourse, temp):
-    if temp < bourse:
-        print(f"le prix est a {temp} $ | actuellement -")
-    if temp > bourse:
-        print(f"le prix est a {temp} $ | actuellement +")
+def affichageB(bourse, prix):
+    if bourse == prix:
+        print(f"le prix est a {bourse} $ | actuellement =")
+    if bourse < prix:
+        print(f"le prix est a {bourse} $ | actuellement -")
+    if bourse > prix:
+        print(f"le prix est a {bourse} $ | actuellement +")
 
-def calculB(bourse, temp):
-    temp = bourse + random.randint(-15, 50)
-    if temp < -50:
-        bourse = bourse + random.randint(34, 1864)
-    if temp > 15000:
-        temp = bourse - random.randint(34, 1864)
+def calculB(bourse, prix):
+    prix = bourse
+    bourse = bourse + 10 #random.randint(-15, 50)
+    print(bourse)
+    print(prix)
 
 while True:
-    temp = bourse + random.randint(-15, 50)
-    affichageB(bourse, temp)
-    calculB(bourse, temp)
-    bourse = temp
-    time.sleep(0.5)
+    calculB(bourse, prix)
+
+    affichageB(bourse, prix)    
+    
+    time.sleep(1)

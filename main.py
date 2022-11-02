@@ -3,8 +3,8 @@ import time
 import os
 import json
 
-ntndo = 10
-prixN = 10
+ntndo = int(10)
+prixN = int(10)
 
 def saveW():
     with open('wallet.txt', 'w') as file:
@@ -27,9 +27,9 @@ def achatVente(wallet, ntndo, usd):
     choix2 = input("que veut tu faire\n1. acheter\n2. vendre\n3. ton compte\n")
     if choix2 == "1":
         acht = input(f"que veux tu acheter ?\n1. Nintendo | prix: {ntndo}\n")
-        if acht == 1:
-            nombreA = input("combient en veux tu ?")
-            prixT = nombreA * ntndo
+        if acht == "1":
+            nombreA = (int(input("combient en veux tu ?")))
+            prixT =  ntndo*nombreA
             if usd > prixT:
                 wallet[ntndo] = nombreA
                 print(f"vous avez bien acheter {nombreA} d'action Nintendo pour le prix de {prixT}")

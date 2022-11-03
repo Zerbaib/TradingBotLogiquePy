@@ -24,13 +24,15 @@ while True:
                 nombreA = int(nombreA)
                 ntndo = int(ntndo)
                 prixT =  ntndo*nombreA
-                prixT = str(prixT)
+                prixT = int(prixT)
+                usd = int(usd)
                 if usd > prixT:
                     wallet["ntndo"] = nombreA
                     print(f"vous avez bien acheter {nombreA} d'action Nintendo pour le prix de {prixT}")
                     usd = int(usd)
                     prixT = int(prixT)
                     usd = usd - prixT
+                    wallet["usd"] = usd
                 else:
                     print("vous avez pas assez")
         if choix2 == "2":
@@ -39,17 +41,20 @@ while True:
                 if wallet.__contains__("ntndo") == True:
                     nmbrVndr = input("commbien veut tu en vendre\n")
                     nmbrVndr = int(nmbrVndr)
+                    usd = int(usd)
                     if wallet.get("ntndo") >= nmbrVndr:
                         wallet["ntndo"] = wallet.get("ntndo") - nmbrVndr
                         tmp = nmbrVndr * ntndo
                         usd = usd + tmp
+                        wallet["usd"] = usd
                         print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")
+                        print(f"vous avez maintenent {usd} $ dans votre compte")
 
     if choix1 == "2":
         for i in range(5):
             os.system("cls")
             prixN = ntndo
-            ntndo = prixN + random.randint(-250, 250)
+            ntndo = prixN + random.randint(-25, 250)
 
             if ntndo != prixN:
                 if ntndo < prixN:

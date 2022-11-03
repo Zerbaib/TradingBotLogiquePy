@@ -11,7 +11,7 @@ ntndo = 10
 prixN = 10
 
 while True:
-    choix1 = input("que veux tu faire\n1. acheter\n2. regarder les prix\n")
+    choix1 = input("que veux tu faire\n1. menu d'achat\n2. regarder les prix\n")
     
     if choix1 == "1":
         os.system("cls")
@@ -19,31 +19,39 @@ while True:
         if choix2 == "1":
             acht = input(f"que veux tu acheter ?\n1. Nintendo | prix: {ntndo}\n")
             if acht == "1":
-                nombreA = input("combient en veux tu ?")
+                nombreA = input("combient en veux tu ?\n")
                 nombreA = int(nombreA)
                 ntndo = int(ntndo)
                 prixT =  ntndo*nombreA
                 prixT = str(prixT)
                 if usd > prixT:
-                    wallet[ntndo] = nombreA
+                    wallet["ntndo"] = nombreA
                     print(f"vous avez bien acheter {nombreA} d'action Nintendo pour le prix de {prixT}")
                     usd = int(usd)
                     prixT = int(prixT)
                     usd = usd - prixT
                 if usd < prixT:
                     print("vous avez pas assez")
-    
+        if choix2 == "2":
+            vndr = input(f"que veut tu vendre ?\n1. Nintendo | prix: {ntndo}\n")
+            if vndr == "1":
+                if wallet.has_key("ntndo") == True:
+                    nmbrVndr = input("commbien veut tu en vendre\n")
     if choix1 == "2":
-        prixN = ntndo
-        ntndo = prixN + random.randint(-250, 250)
+        for i in range(5):
+            os.system("cls")
+            prixN = ntndo
+            ntndo = prixN + random.randint(-250, 250)
 
-        if ntndo != prixN:
-            if ntndo < prixN:
-                print(f"le prix de Nintendo est a {ntndo} $ | actuellement -")
+            if ntndo != prixN:
+                if ntndo < prixN:
+                    print(f"le prix de Nintendo est a {ntndo} $ | actuellement -")
+                else:
+                    print(f"le prix de Nintendo est a {ntndo} $ | actuellement +")
             else:
-                print(f"le prix de Nintendo est a {ntndo} $ | actuellement +")
-        else:
-            print(f"le prix de Nintendo est a {ntndo} $ | actuellement =")
+                print(f"le prix de Nintendo est a {ntndo} $ | actuellement =")
+            time.sleep(1)
+            os.system("cls")
     
     time.sleep(1)
     with open('wallet.txt', 'w') as file:

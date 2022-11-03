@@ -14,8 +14,11 @@ with open('wallet.txt', 'r') as file:
     wallet = json.load(file)
 
 usd = wallet.get("usd")
-ntndo = 100
+ntndo = 173
 prixN = ntndo
+
+apl = 251
+prixA = apl
 #
  # # # Start Block
 
@@ -27,16 +30,16 @@ def menuA():
     os.system("cls")
     choix2 = input("que veut tu faire\n1. acheter\n2. vendre\n3. ton compte\n")
     if choix2 == "1":
-        menuA1(ntndo, usd)
+        menuA1(ntndo, apl, usd)
         
     if choix2 == "2":
-        menuA2(ntndo, usd)
+        menuA2(ntndo, apl, usd)
 
     if choix2 == "3":
-        menuA3(ntndo, usd)
+        menuA3(ntndo, apl, usd)
 
-def menuA1(ntndo, usd):
-    acht = input(f"que veux tu acheter ?\n1. Nintendo | prix: {ntndo}\n")
+def menuA1(ntndo, apl, usd):
+    acht = input(f"que veux tu acheter ?\n1. Nintendo | prix: {ntndo}\n2. Apple | prix: {apl}\n")
     if acht == "1":
         nombreA = input("combient en veux tu ?\n")
         nombreA = int(nombreA)
@@ -54,51 +57,117 @@ def menuA1(ntndo, usd):
             time.sleep(1)
         else:
             print("vous avez pas assez")
+            time.sleep(0.5)
         os.system('cls')
-def menuA2(ntndo, usd):
-    vndr = input(f"que veut tu vendre ?\n1. Nintendo | prix: {ntndo}\n")
+    if acht == "2":
+        nombreB = input("combient en veux tu ?\n")
+        nombreB = int(nombreB)
+        apl = int(apl)
+        prixT = apl*nombreB
+        prixT = int(prixT)
+        usd = int(usd)
+        if usd >= prixT:
+            wallet["apl"] = nombreB
+            print(f"vous avez bien acheter {nombreB} d'action Apple pour le prix de {prixT}")
+            usd = int(usd)
+            prixT = int(prixT)
+            usd = usd - prixT
+            wallet["usd"] = usd
+            time.sleep(1)
+        else:
+            print("vous avez pas assez")
+            time.sleep(0.5)
+        os.system('cls')
+def menuA2(ntndo, apl, usd):
+    vndr = input(f"que veut tu vendre ?\n1. Nintendo | prix: {ntndo}\n2. Apple | prix: {apl}\n")
     if vndr == "1":
         if wallet.__contains__("ntndo") == True:
-            nmbrVndr = input("commbien veut tu en vendre\n") # exemple 9
-            nmbrVndr = int(nmbrVndr)
-            usd = int(usd)
-            if wallet.get("ntndo") <= nmbrVndr:
-                wallet["ntndo"] = wallet.get("ntndo") - nmbrVndr
-                tmp = nmbrVndr * ntndo
-                usd = usd + tmp
-                wallet["usd"] = usd
-                print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")
-                print(f"vous avez maintenent {usd} $ dans votre compte")
+            if wallet.get("ntndo") != 0:
+                nmbrVndr = input("combien veut tu en vendre\n")
+                nmbrVndr = int(nmbrVndr)
+                usd = int(usd)
+                if wallet.get("ntndo") <= nmbrVndr:
+                    wallet["ntndo"] = wallet.get("ntndo") - nmbrVndr
+                    tmp = nmbrVndr * ntndo
+                    usd = usd + tmp
+                    wallet["usd"] = usd
+                    print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")
+                    print(f"vous avez maintenent {usd} $ dans votre compte")
+                else:
+                    print("vous avez pas asser")
+                time.sleep(1)
             else:
-                print("vous avez pas asser")
-            time.sleep(1)
-            os.system("cls")
-def menuA3(ntndo, usd):
+                print("vous en avez 0")
+                time.sleep(0.5)
+        else:
+            print("ERROR 101")
+            time.sleep(0.5)
+        os.system("cls")
+    if vndr == "2":
+        if wallet.__contains__("apl") == True:
+            if wallet.get("apl") != 0:
+                nmbrVndr = input("combien veut tu en vendre\n")
+                nmbrVndr = int(nmbrVndr)
+                usd = int(usd)
+                if wallet.get("apl") <= nmbrVndr:
+                    wallet["apl"] = wallet.get("apl") - nmbrVndr
+                    tmp = nmbrVndr * apl
+                    usd = usd + tmp
+                    wallet["usd"] = usd
+                    print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")
+                    print(f"vous avez maintenent {usd} $ dans votre compte")
+                else:
+                    print("vous avez pas asser")
+                time.sleep(1)
+            else:
+                print("vous en avez 0")
+                time.sleep(0.5)
+        else:
+            print("ERROR 101")
+            time.sleep(0.5)
+        os.system("cls")
+def menuA3(ntndo, apl, usd):
     os.system("cls")
-    print(f"dollars sur le compte: {usd}")
+    print(f"dollars sur le compte: " + str(wallet.get("usd")))
     print("vous possedez:")
     print("Nintendo: " + str(wallet.get("ntndo")))
+    print("Apple: " + str(wallet.get("apl")))
     time.sleep(1.5)
     os.system("cls")
 # Fin block fonction menu d'achat vente
 
 # Block fonction prix
-def prixC(ntndo):
+def prixC():
     for i in range(5):
         os.system("cls")
-        prixN = ntndo
-        ntndo = prixN + random.randint(-25, 250)
-
-        if ntndo != prixN:
-            if ntndo < prixN:
-                print(f"le prix de Nintendo est a {ntndo} $ | actuellement -")
-            else:
-                print(f"le prix de Nintendo est a {ntndo} $ | actuellement +")
-        else:
-            print(f"le prix de Nintendo est a {ntndo} $ | actuellement =")
+        nintendo(ntndo)
+        apple(apl)
         time.sleep(1)
         os.system("cls")
 # Fin block fonction prix
+
+# Block fonction marque
+def nintendo(ntndo):
+    prixN = ntndo
+    ntndo = prixN + random.randint(-100, 100)
+    if ntndo != prixN:
+        if ntndo < prixN:
+            print(f"le prix de Nintendo est a {ntndo} $ | actuellement -")
+        else:
+            print(f"le prix de Nintendo est a {ntndo} $ | actuellement +")
+    else:
+        print(f"le prix de Nintendo est a {ntndo} $ | actuellement =")
+def apple(apl):
+    prixA = apl
+    apl = prixA + random.randint(-200, 200)
+    if apl != prixA:
+        if apl < prixA:
+            print(f"le prix de Apple est a {apl} $ | actuellement -")
+        else:
+            print(f"le prix de Apple est a {apl} $ | actuellement +")
+    else:
+        print(f"le prix de Apple est a {apl} $ | actuellement =")
+# Fin block fonction marque
 #
  # # # Block fonction
 
@@ -111,7 +180,7 @@ while True:
         menuA()
 
     if choix1 == "2":
-        prixC(ntndo)
+        prixC()
     
     time.sleep(1)
     with open('wallet.txt', 'w') as file:

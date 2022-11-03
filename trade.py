@@ -2,6 +2,7 @@ import random
 import time
 import os
 import json
+from xml.dom.domreg import well_known_implementations
 
 with open('wallet.txt', 'r') as file:
     wallet = json.load(file)
@@ -30,13 +31,20 @@ while True:
                     usd = int(usd)
                     prixT = int(prixT)
                     usd = usd - prixT
-                if usd < prixT:
+                else:
                     print("vous avez pas assez")
         if choix2 == "2":
             vndr = input(f"que veut tu vendre ?\n1. Nintendo | prix: {ntndo}\n")
             if vndr == "1":
-                if wallet.has_key("ntndo") == True:
+                if wallet.__contains__("ntndo") == True:
                     nmbrVndr = input("commbien veut tu en vendre\n")
+                    nmbrVndr = int(nmbrVndr)
+                    if wallet.get("ntndo") >= nmbrVndr:
+                        wallet["ntndo"] = wallet.get("ntndo") - nmbrVndr
+                        tmp = nmbrVndr * ntndo
+                        usd = usd + tmp
+                        print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")
+
     if choix1 == "2":
         for i in range(5):
             os.system("cls")

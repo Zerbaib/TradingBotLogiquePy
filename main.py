@@ -49,7 +49,7 @@ def menuA1(ntndo, apl, chnl, usd):
     if acht == "1":
         nombreA = input("combient en veux tu ?\n")
         nombreA = int(nombreA)
-        ntndo = int(ntndo)
+        ntndo = int(price.get("ntndo"))
         prixT =  ntndo*nombreA
         prixT = int(prixT)
         usd = int(usd)
@@ -68,7 +68,7 @@ def menuA1(ntndo, apl, chnl, usd):
     if acht == "2":
         nombreB = input("combient en veux tu ?\n")
         nombreB = int(nombreB)
-        apl = int(apl)
+        apl = int(price.get("apl"))
         prixT = apl*nombreB
         prixT = int(prixT)
         usd = int(usd)
@@ -87,7 +87,7 @@ def menuA1(ntndo, apl, chnl, usd):
     if acht == "3":
         nombreC = input("combient en veux tu ?\n")
         nombreC = int(nombreC)
-        chnl = int(chnl)
+        chnl = int(price.get("chnl"))
         prixT = chnl*nombreC
         prixT = int(prixT)
         usd = int(usd)
@@ -113,7 +113,7 @@ def menuA2(ntndo, apl, chnl, usd):
                 usd = int(usd)
                 if wallet.get("ntndo") >= nmbrVndr:
                     wallet["ntndo"] = wallet.get("ntndo") - nmbrVndr
-                    tmp = nmbrVndr * ntndo
+                    tmp = nmbrVndr * price.get("ntndo")
                     usd = usd + tmp
                     wallet["usd"] = usd
                     print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")
@@ -136,7 +136,7 @@ def menuA2(ntndo, apl, chnl, usd):
                 usd = int(usd)
                 if wallet.get("apl") >= nmbrVndr:
                     wallet["apl"] = wallet.get("apl") - nmbrVndr
-                    tmp = nmbrVndr * apl
+                    tmp = nmbrVndr * price.get("apl")
                     usd = usd + tmp
                     wallet["usd"] = usd
                     print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")
@@ -159,7 +159,7 @@ def menuA2(ntndo, apl, chnl, usd):
                 usd = int(wallet.get("usd"))
                 if wallet.get("chnl") >= nmbrVndr:
                     wallet["chnl"] = wallet.get("chnl") - nmbrVndr
-                    tmp = nmbrVndr * chnl
+                    tmp = nmbrVndr * price.get("chnl")
                     usd = usd + tmp
                     wallet["usd"] = usd
                     print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")

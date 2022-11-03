@@ -27,15 +27,15 @@ def menuA():
     os.system("cls")
     choix2 = input("que veut tu faire\n1. acheter\n2. vendre\n3. ton compte\n")
     if choix2 == "1":
-        menuA1()
+        menuA1(ntndo, usd)
         
     if choix2 == "2":
-        menuA2()
+        menuA2(ntndo, usd)
 
     if choix2 == "3":
-        menuA3()
+        menuA3(ntndo, usd)
 
-def menuA1():
+def menuA1(ntndo, usd):
     acht = input(f"que veux tu acheter ?\n1. Nintendo | prix: {ntndo}\n")
     if acht == "1":
         nombreA = input("combient en veux tu ?\n")
@@ -55,7 +55,7 @@ def menuA1():
         else:
             print("vous avez pas assez")
         os.system('cls')
-def menuA2():
+def menuA2(ntndo, usd):
     vndr = input(f"que veut tu vendre ?\n1. Nintendo | prix: {ntndo}\n")
     if vndr == "1":
         if wallet.__contains__("ntndo") == True:
@@ -71,7 +71,9 @@ def menuA2():
                 print(f"vous avez maintenent {usd} $ dans votre compte")
             else:
                 print("vous avez pas asser")
-def menuA3():
+            time.sleep(1)
+            os.system("cls")
+def menuA3(ntndo, usd):
     os.system("cls")
     print(f"dollars sur le compte: {usd}")
     print("vous possedez:")
@@ -79,8 +81,29 @@ def menuA3():
     time.sleep(1.5)
     os.system("cls")
 # Fin block fonction menu d'achat vente
+
+# Block fonction prix
+def prixC(ntndo):
+    for i in range(5):
+        os.system("cls")
+        prixN = ntndo
+        ntndo = prixN + random.randint(-25, 250)
+
+        if ntndo != prixN:
+            if ntndo < prixN:
+                print(f"le prix de Nintendo est a {ntndo} $ | actuellement -")
+            else:
+                print(f"le prix de Nintendo est a {ntndo} $ | actuellement +")
+        else:
+            print(f"le prix de Nintendo est a {ntndo} $ | actuellement =")
+        time.sleep(1)
+        os.system("cls")
+# Fin block fonction prix
 #
  # # # Block fonction
+
+ # # # Block boucle
+#
 while True:
     choix1 = input("que veux tu faire\n1. menu d'achat\n2. regarder les prix\n")
     
@@ -88,21 +111,10 @@ while True:
         menuA()
 
     if choix1 == "2":
-        for i in range(5):
-            os.system("cls")
-            prixN = ntndo
-            ntndo = prixN + random.randint(-25, 250)
-
-            if ntndo != prixN:
-                if ntndo < prixN:
-                    print(f"le prix de Nintendo est a {ntndo} $ | actuellement -")
-                else:
-                    print(f"le prix de Nintendo est a {ntndo} $ | actuellement +")
-            else:
-                print(f"le prix de Nintendo est a {ntndo} $ | actuellement =")
-            time.sleep(1)
-            os.system("cls")
+        prixC(ntndo)
     
     time.sleep(1)
     with open('wallet.txt', 'w') as file:
         json.dump(wallet, file)
+#
+ # # # Block boucle

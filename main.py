@@ -13,15 +13,17 @@ from xml.dom.domreg import well_known_implementations
 #
 with open('wallet.txt', 'r') as file:
     wallet = json.load(file)
+with open('price.txt','r') as file:
+    price = json.load(file)
 
 usd = wallet.get("usd")
-ntndo = 173
+ntndo = price.get("ntndo")
 prixN = ntndo
 
-apl = 251
+apl = price.get("apl")
 prixA = apl
 
-chnl = 368
+chnl = price.get("chnl")
 prixC = chnl
 #
  # # # Start Block
@@ -91,7 +93,7 @@ def menuA1(ntndo, apl, chnl, usd):
         usd = int(usd)
         if usd >= prixT:
             wallet["chnl"] = nombreC
-            print(f"vous avez bien acheter {nombreB} d'action Channel pour le prix de {prixT}")
+            print(f"vous avez bien acheter {nombreC} d'action Channel pour le prix de {prixT}")
             usd = int(usd)
             prixT = int(prixT)
             usd = usd - prixT
@@ -154,7 +156,7 @@ def menuA2(ntndo, apl, chnl, usd):
             if wallet.get("chnl") != 0:
                 nmbrVndr = input("combien veut tu en vendre\n")
                 nmbrVndr = int(nmbrVndr)
-                usd = int(usd)
+                usd = int(wallet.get("usd"))
                 if wallet.get("chnl") >= nmbrVndr:
                     wallet["chnl"] = wallet.get("chnl") - nmbrVndr
                     tmp = nmbrVndr * chnl
@@ -205,6 +207,7 @@ def nintendo(ntndo):
             print(f"le prix de Nintendo est a {ntndo} $ | actuellement +")
     else:
         print(f"le prix de Nintendo est a {ntndo} $ | actuellement =")
+    price["ntndo"] = ntndo
 def apple(apl):
     prixA = apl
     apl = prixA + random.randint(-100, 100)
@@ -215,6 +218,7 @@ def apple(apl):
             print(f"le prix de Apple est a {apl} $ | actuellement +")
     else:
         print(f"le prix de Apple est a {apl} $ | actuellement =")
+    price["apl"] = apl
 def channel(chnl):
     prixC = chnl
     chnl = prixA + random.randint(-100, 100)
@@ -225,6 +229,7 @@ def channel(chnl):
             print(f"le prix de Channel est a {chnl} $ | actuellement +")
     else:
         print(f"le prix de Channel est a {chnl} $ | actuellement =")
+    price["chnl"] = chnl
 # Fin block fonction marque
 #
  # # # Block fonction
@@ -243,5 +248,7 @@ while True:
     time.sleep(1)
     with open('wallet.txt', 'w') as file:
         json.dump(wallet, file)
+    with open('price.txt', 'w') as file:
+        json.dump(price, file)
 #
  # # # Block boucle

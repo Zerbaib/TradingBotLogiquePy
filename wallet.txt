@@ -1,1 +1,1 @@
-{"usd": 327, "ntndo": 1, "apl": 0}
+{"usd": 132, "ntndo": 0, "apl": 0, "chnl": 0}

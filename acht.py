@@ -2,7 +2,15 @@ import time
 import os
 from saveLoad import *
 
+loadDB(wallet, price)
+
+def majPrx(ntndo, apl, chnl):
+    ntndo = price.get("ntndo")
+    apl = price.get("apl")
+    chnl = price.get("chnl")
+
 def acheter(ntndo, apl, chnl, usd):
+    majPrx(ntndo, apl, chnl)
     acht = input(f"que veux tu acheter ?\n1. Nintendo | prix: {ntndo}\n2. Apple | prix: {apl}\n3. Channel | prix {chnl}\n")
     if acht == "1":
         nombreA = input("combient en veux tu ?\n")

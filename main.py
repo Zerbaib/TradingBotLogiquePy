@@ -13,9 +13,9 @@ from marque import *
 #
 loadDB(wallet, price)
 
-ntndo = wallet.get("ntndo")
-apl = wallet.get("apl")
-chnl = wallet.get("chnl")
+ntndo = price.get("ntndo")
+apl = price.get("apl")
+chnl = price.get("chnl")
 
 usd = wallet.get("usd")
 #

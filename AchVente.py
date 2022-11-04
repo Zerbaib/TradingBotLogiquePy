@@ -1,11 +1,11 @@
 import json
 import time
 import os
+import SaveLoad
+from SaveLoad import wallet
+from SaveLoad import price
 
-with open('wallet.txt', 'r') as file:
-    wallet = json.load(file)
-with open('price.txt','r') as file:
-    price = json.load(file)
+SaveLoad.loadDB()
 
 
 def menuA1(ntndo, apl, chnl, usd):
@@ -67,6 +67,10 @@ def menuA1(ntndo, apl, chnl, usd):
             print("vous avez pas assez")
             time.sleep(0.5)
         os.system('cls')
+    with open('wallet.txt', 'w') as file:
+        json.dump(wallet, file)
+    with open('price.txt', 'w') as file:
+        json.dump(price, file)
 def menuA2(ntndo, apl, chnl, usd):
     vndr = input(f"que veut tu vendre ?\n1. Nintendo | prix: {ntndo}\n2. Apple | prix: {apl}\n3. Channel | prix: {chnl}\n")
     if vndr == "1":
@@ -138,6 +142,10 @@ def menuA2(ntndo, apl, chnl, usd):
             print("ERROR 101")
             time.sleep(0.5)
         os.system("cls")
+    with open('wallet.txt', 'w') as file:
+        json.dump(wallet, file)
+    with open('price.txt', 'w') as file:
+        json.dump(price, file)
 def menuA3():
     os.system("cls")
     print(f"dollars sur le compte: " + str(wallet.get("usd")))
@@ -147,3 +155,7 @@ def menuA3():
     print("Channel: " + str(wallet.get("chnl")))
     time.sleep(1.5)
     os.system("cls")
+    with open('wallet.txt', 'w') as file:
+        json.dump(wallet, file)
+    with open('price.txt', 'w') as file:
+        json.dump(price, file)

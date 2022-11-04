@@ -8,15 +8,15 @@ import json
 from xml.dom.domreg import well_known_implementations
 import AchVente
 import marque
+import SaveLoad
+from SaveLoad import wallet
+from SaveLoad import price
 #
  # # # Block module
 
  # # # Start Block
 #
-with open('wallet.txt', 'r') as file:
-    wallet = json.load(file)
-with open('price.txt','r') as file:
-    price = json.load(file)
+SaveLoad.loadDB()
 
 usd = wallet.get("usd")
 ntndo = price.get("ntndo")

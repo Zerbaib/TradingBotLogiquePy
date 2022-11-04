@@ -2,11 +2,11 @@ import json
 import time
 import os
 import random
+import SaveLoad
+from SaveLoad import wallet
+from SaveLoad import price
 
-with open('wallet.txt', 'r') as file:
-    wallet = json.load(file)
-with open('price.txt','r') as file:
-    price = json.load(file)
+SaveLoad.loadDB()
 
 usd = wallet.get("usd")
 ntndo = price.get("ntndo")

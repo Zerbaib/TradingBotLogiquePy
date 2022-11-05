@@ -1,4 +1,4 @@
-import time
+from time import sleep
 import os
 from saveLoad import *
 
@@ -26,10 +26,10 @@ def acheter(ntndo, apl, chnl, usd):
             prixT = int(prixT)
             usd = usd - prixT
             wallet["usd"] = usd
-            time.sleep(1)
+            sleep(1)
         else:
             print("vous avez pas assez")
-            time.sleep(0.5)
+            sleep(0.5)
         os.system('cls')
     if acht == "2":
         nombreB = input("combient en veux tu ?\n")
@@ -45,10 +45,10 @@ def acheter(ntndo, apl, chnl, usd):
             prixT = int(prixT)
             usd = usd - prixT
             wallet["usd"] = usd
-            time.sleep(1)
+            sleep(1)
         else:
             print("vous avez pas assez")
-            time.sleep(0.5)
+            sleep(0.5)
         os.system('cls')
     if acht == "3":
         nombreC = input("combient en veux tu ?\n")
@@ -64,8 +64,8 @@ def acheter(ntndo, apl, chnl, usd):
             prixT = int(prixT)
             usd = usd - prixT
             wallet["usd"] = usd
-            time.sleep(1)
+            sleep(1)
         else:
             print("vous avez pas assez")
-            time.sleep(0.5)
+            sleep(0.5)
         os.system('cls')

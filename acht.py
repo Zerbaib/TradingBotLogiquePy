@@ -11,7 +11,7 @@ def majPrx(ntndo, apl, chnl):
 
 def acheter(ntndo, apl, chnl, usd):
     majPrx(ntndo, apl, chnl)
-    acht = input(f"que veux tu acheter ?\n1. Nintendo | prix: {ntndo}\n2. Apple | prix: {apl}\n3. Channel | prix {chnl}\n")
+    acht = input("que veux tu acheter ?\n1. Nintendo | prix: " + str(price.get("ntndo")) + "\n2. Apple | prix: " + str(price.get("apl")) + "\n3. Channel | prix " + str(price.get("chnl")) + "\n")
     if acht == "1":
         nombreA = input("combient en veux tu ?\n")
         nombreA = int(nombreA)

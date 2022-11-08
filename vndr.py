@@ -6,7 +6,7 @@ loadDB(wallet, price)
 
 def vendre(ntndo, apl, chnl, usd):
     loadDB(wallet, price)
-    vndr = input(f"que veut tu vendre ?\n1. Nintendo | prix: {ntndo}\n2. Apple | prix: {apl}\n3. Channel | prix: {chnl}\n")
+    vndr = input(f"que veut tu vendre ?\n1. Nintendo | prix: " + str(price.get("ntndo")) + "\n2. Apple | prix: " + str(price.get("apl")) + "\n3. Channel | prix " + str(price.get("chnl")) + "\n")
     if vndr == "1":
         if wallet.__contains__("ntndo") == True:
             if wallet.get("ntndo") != 0:

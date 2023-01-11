@@ -9,14 +9,12 @@ def nintendo(ntndo):
     if ntndo < 5:
         ntndo = 5
         print(f"le prix de Nintendo est a {ntndo} $ | actuellement \033[1;31;40m-\033[0m")
+    elif ntndo == prixN:
+        print(f"le prix de Nintendo est a {ntndo} $ | actuellement \033[1;32;40m=\033[0m")
+    elif ntndo < prixN:
+        print(f"le prix de Nintendo est a {ntndo} $ | actuellement \033[1;31;40m-\033[0m")
     else:
-        if ntndo != prixN:
-            if ntndo < prixN:
-                print(f"le prix de Nintendo est a {ntndo} $ | actuellement \033[1;31;40m-\033[0m")
-            else:
-                print(f"le prix de Nintendo est a {ntndo} $ | actuellement \033[1;32;40m+\033[0m")
-        else:
-            print(f"le prix de Nintendo est a {ntndo} $ | actuellement \033[1;32;40m=\033[0m")
+        print(f"le prix de Nintendo est a {ntndo} $ | actuellement \033[1;32;40m+\033[0m")
     price["ntndo"] = ntndo
     saveDB(wallet, price)
 
@@ -26,14 +24,12 @@ def apple(apl):
     if apl < 15:
         apl = 15
         print(f"le prix de Apple est a {apl} $ | actuellement \033[1;31;40m-\033[0m")
+    elif apl == prixA:
+        print(f"le prix de Apple est a {apl} $ | actuellement \033[1;32;40m=\033[0m")
+    elif apl < prixA:
+        print(f"le prix de Apple est a {apl} $ | actuellement \033[1;31;40m-\033[0m")
     else:
-        if apl != prixA:
-            if apl < prixA:
-                print(f"le prix de Apple est a {apl} $ | actuellement \033[1;31;40m-\033[0m")
-            else:
-                print(f"le prix de Apple est a {apl} $ | actuellement \033[1;32;40m+\033[0m")
-        else:
-            print(f"le prix de Apple est a {apl} $ | actuellement \033[1;32;40m=\033[0m")
+        print(f"le prix de Apple est a {apl} $ | actuellement \033[1;32;40m+\033[0m")
     price["apl"] = apl
     saveDB(wallet, price)
 
@@ -43,13 +39,11 @@ def channel(chnl):
     if chnl < 35:
         chnl = 35
         print(f"le prix de Nintendo est a {chnl} $ | actuellement \033[1;31;40m-\033[0m")
+    elif chnl == prixC:
+        print(f"le prix de Channel est a {chnl} $ | actuellement \033[1;32;40m=\033[0m")
+    elif chnl < prixC:
+        print(f"le prix de Channel est a {chnl} $ | actuellement \033[1;31;40m-\033[0m")
     else:
-        if chnl != prixC:
-            if chnl < prixC:
-                print(f"le prix de Channel est a {chnl} $ | actuellement \033[1;31;40m-\033[0m")
-            else:
-                print(f"le prix de Channel est a {chnl} $ | actuellement \033[1;32;40m+\033[0m")
-        else:
-            print(f"le prix de Channel est a {chnl} $ | actuellement \033[1;32;40m=\033[0m")
+        print(f"le prix de Channel est a {chnl} $ | actuellement \033[1;32;40m+\033[0m")
     price["chnl"] = chnl
     saveDB(wallet, price)

@@ -39,7 +39,7 @@ def menuA():
 
 def compte():
     os.system("cls")
-    print(f"dollars sur le compte: " + str(wallet.get("usd")))
+    print("dollars sur le compte: " + str(wallet.get("usd")))
     print("vous possedez:")
     print("Nintendo: " + str(wallet.get("ntndo")))
     print("Apple: " + str(wallet.get("apl")))
@@ -50,7 +50,7 @@ def compte():
 
 # Block fonction prix
 def prxC():
-    for i in range(5):
+    for _ in range(5):
         os.system("cls")
         nintendo(ntndo)
         apple(apl)

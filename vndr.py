@@ -16,7 +16,7 @@ def vendre(ntndo, apl, chnl, usd):
                 if wallet.get("ntndo") >= nmbrVndr:
                     wallet["ntndo"] = wallet.get("ntndo") - nmbrVndr
                     tmp = nmbrVndr * price.get("ntndo")
-                    usd = usd + tmp
+                    usd += tmp
                     wallet["usd"] = usd
                     print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")
                     print(f"vous avez maintenent {usd} $ dans votre compte")
@@ -40,7 +40,7 @@ def vendre(ntndo, apl, chnl, usd):
                 if wallet.get("apl") >= nmbrVndr:
                     wallet["apl"] = wallet.get("apl") - nmbrVndr
                     tmp = nmbrVndr * price.get("apl")
-                    usd = usd + tmp
+                    usd += tmp
                     wallet["usd"] = usd
                     print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")
                     print(f"vous avez maintenent {usd} $ dans votre compte")
@@ -64,7 +64,7 @@ def vendre(ntndo, apl, chnl, usd):
                 if wallet.get("chnl") >= nmbrVndr:
                     wallet["chnl"] = wallet.get("chnl") - nmbrVndr
                     tmp = nmbrVndr * price.get("chnl")
-                    usd = usd + tmp
+                    usd += tmp
                     wallet["usd"] = usd
                     print(f"vous avez bien vendue {nmbrVndr} pour le prix de {tmp}")
                     print(f"vous avez maintenent {usd} $ dans votre compte")

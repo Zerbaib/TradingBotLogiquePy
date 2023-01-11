@@ -22,9 +22,8 @@ def acheter(ntndo, apl, chnl, usd):
         if usd >= prixT:
             wallet["ntndo"] = nombreA
             print(f"vous avez bien acheter {nombreA} d'action Nintendo pour le prix de {prixT}")
-            usd = int(usd)
-            prixT = int(prixT)
-            usd = usd - prixT
+            prixT = prixT
+            usd -= prixT
             wallet["usd"] = usd
             time.sleep(1)
         else:
@@ -41,9 +40,8 @@ def acheter(ntndo, apl, chnl, usd):
         if usd >= prixT:
             wallet["apl"] = nombreB
             print(f"vous avez bien acheter {nombreB} d'action Apple pour le prix de {prixT}")
-            usd = int(usd)
-            prixT = int(prixT)
-            usd = usd - prixT
+            prixT = prixT
+            usd -= prixT
             wallet["usd"] = usd
             time.sleep(1)
         else:
@@ -60,9 +58,8 @@ def acheter(ntndo, apl, chnl, usd):
         if usd >= prixT:
             wallet["chnl"] = nombreC
             print(f"vous avez bien acheter {nombreC} d'action Channel pour le prix de {prixT}")
-            usd = int(usd)
-            prixT = int(prixT)
-            usd = usd - prixT
+            prixT = prixT
+            usd -= prixT
             wallet["usd"] = usd
             time.sleep(1)
         else:
